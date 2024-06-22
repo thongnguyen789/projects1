@@ -1,0 +1,170 @@
+﻿@model MayinOnline.Models.Mathang
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="fw-bolder text-dark pt2">Thông tin sản phẩm</h1>
+<br />
+<br />
+<br />
+<div id="page-content" class="single-page">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex">
+                <div class="col-6">
+                    <div class="image">
+                        <img src="~/Template/Picture/@Html.DisplayFor(model => model.HinhAnh)" class="card-img" />
+                        <div class="image-more">
+                            <div id="image-container">
+                                <ul class="row list-sty">
+                                    <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <a href="#"><img class="img-responsive" src="~/Template/Picture/@Html.DisplayFor(model => model.HinhAnh)"></a>
+                                    </li>
+                                    <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <a href="#"><img class="img-responsive" src="~/Template/Picture/@Html.DisplayFor(model => model.Hinh1)"></a>
+                                    </li>
+                                    <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <a href="#"><img class="img-responsive" src="~/Template/Picture/@Html.DisplayFor(model => model.Hinh2)"></a>
+                                    </li>
+                                    <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <a href="#"><img class="img-responsive" src="~/Template/Picture/@Html.DisplayFor(model => model.Hinh3)"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="display-image-overlay" class="display">
+                            <img id="displayed-image" src="">
+                            <button id="close-btn">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="caption pl1">
+                        <div class="name cart-product-title fw-bolder text-danger"><h3>@Html.DisplayFor(model => model.Ten)</h3></div>
+                        <div class="price cart-price lager">
+                            <span>Giá:</span>
+                            <span class="text-danger fw-bolder"> @string.Format("{0:N0}đ", Model.GiaBan)</span>
+                            <span class="text-muted text-decoration-line-through">@string.Format("{0:N0}đ", Model.GiaGoc)</span>
+                        </div>
+                        <div class="price cart-price lager">
+                            <span>Số lượng còn: @Html.DisplayFor(model => model.SoLuong)</span>
+                        </div>
+                        <div class="d-flex small text-warning mb-2 lager">
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-danger mt-auto" asp-action="AddToCart" asp-route-id="@Model.MaMh">Chọn mua</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-desc">
+                <div class="nav nav-tabs">
+                    <a class="actor" href="#description">MÔ TẢ</a>
+                </div>
+                <div id="description" class="tab-pane active">
+                    <h4>Đặc điểm nổi bật</h4>
+                    <p class="ment">@Html.DisplayFor(model => model.MoTa)</p>
+                </div>
+            </div>
+            <div class="product-desc">
+                <div class="nav nav-tabs">
+                    <a class="actor" href="#evaluate">ĐÁNH GIÁ</a>
+                </div>
+                <div class="tab-content">
+                    <div class="review-text">
+                        <p>Với mục tiêu là mang đến sản phẩm chất lượng, tối ưu nhất cho người dùng đều này được chúng tôi thể hiện ở sản phẩm trên và hãy bình chọn cho chúng tôi biết là sản phẩm đó có phù hợp với bạn không.</p>
+                    </div>
+                    <div class="review-form">
+                        <h4>Write a review</h4>
+                        <form name="form1" id="ff" method="post">
+                            <label>
+                                <span class="fiter">ĐÁNH GIÁ SẢN PHẨM:</span>
+                            </label>
+                            <span class="heth">User Rating</span>
+                            <span class="bi-star-fill checked late"></span>
+                            <span class="bi-star-fill checked late"></span>
+                            <span class="bi-star-fill checked late"></span>
+                            <span class="bi-star-fill checked late"></span>
+                            <span class="bi-star-fill late"></span>
+
+                            <p>4.1 average based on 254 reviews.</p>
+                            <hr style="border:3px solid #f1f1f1">
+
+                            <div class="row mr1">
+                                <div class="side">
+                                    <div>5 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-5"></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>150</div>
+                                </div>
+                                <div class="side">
+                                    <div>4 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-4"></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>63</div>
+                                </div>
+                                <div class="side">
+                                    <div>3 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-3"></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>15</div>
+                                </div>
+                                <div class="side">
+                                    <div>2 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-2"></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>6</div>
+                                </div>
+                                <div class="side">
+                                    <div>1 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-1"></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>20</div>
+                                </div>
+                            </div>
+
+                            <label>
+                                <span class="fiter">BÌNH LUẬN SẢN PHẨM:</span>
+                                <textarea name="message" id="message"></textarea>
+                            </label>
+                            <div class="text-right">
+                                <input class="btn btn-3 text-align" type="submit" name="Submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

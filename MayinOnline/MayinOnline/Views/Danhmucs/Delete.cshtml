@@ -1,0 +1,27 @@
+﻿@model MayinOnline.Models.Danhmuc
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="publid">Delete</h1>
+
+<h3>Bạn chắc chắn muốn xóa danh mục này?</h3>
+<div>
+    <h4>Danhmuc</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaDm" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Quay lại danh sách</a>
+    </form>
+</div>

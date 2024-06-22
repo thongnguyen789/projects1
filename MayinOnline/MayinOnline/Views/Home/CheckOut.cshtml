@@ -1,0 +1,88 @@
+﻿@model List<MayinOnline.Models.Cartitem>
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+<h3 class="pd2 text-danger"> Vui lòng kiểm tra thông tin trước khi thanh toán </h3>
+<br />
+<div class="row pd4 pb5">
+    <div class="col">
+        <h3>Thông tin khách hàng</h3>
+        @if (ViewBag.khachhang != null)
+        {
+    <form asp-controller="Home" asp-action="CreateBill">
+        <input type="hidden" name="id" value="@ViewBag.khachhang.MaKh" />
+        <div class="mb-3">
+            <label>Họ Tên </label>
+            <input name="hoten" class="form-control" type="text" value="@ViewBag.khachhang.Ten" required />
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input name="email" class="form-control" type="email" value="@ViewBag.khachhang.Email" required />
+        </div>
+        <div class="mb-3">
+            <label>Số Điện Thoại</label>
+            <input name="dienthoai" class="form-control" type="tel" maxlength="10" value="@ViewBag.khachhang.DienThoai" />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Xác nhận đơn hàng" class="btn btn-danger" onclick="LoadAlert();" />
+        </div>
+    </form>
+        }
+        else
+        {
+            <h3 class="pd2 text-info">Bạn chưa đăng nhập: <a class="text2" asp-controller="Home" asp-action="Login"> Đăng nhập</a></h3>
+        }
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-info">Giỏ hàng của bạn</h3>
+        @if (Model.Count > 0)
+        {
+            int stt = 1;
+            int thanhtien = 0;
+            int tongtien = 0;
+            <table class="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+                @foreach (var i in Model)
+                {
+                    thanhtien = i.Mathang.GiaBan * i.Soluong;
+                    tongtien += thanhtien;
+                    <tr class="align-middle">
+                        <td>
+                            @(stt++)
+                        </td>
+                        <td>
+                            <img src="~/Template/Picture/@(i.Mathang.HinhAnh)" class="img-thumbnail" width="50" />
+                            @(i.Mathang.Ten)
+                        </td>
+                        <td>
+                            @(i.Mathang.GiaBan.ToString("n0"))đ
+                        </td>
+                        <td>
+                            @(i.Soluong)
+                        </td>
+                        <td>
+                            @(thanhtien.ToString("n0"))đ
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="4" class="text-end fw-bold">Thành tiền</td>
+                    <td colspan="2"><strong class="text-danger">@(tongtien.ToString("n0"))đ</strong></td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
+
+<script>
+    function LoadAlert() {
+        alert("Đặt hàng thành công!");
+    }
+</script>

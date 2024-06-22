@@ -1,0 +1,47 @@
+﻿@{
+
+    ViewData["Title"] = "Tại Đây Có Đăng Ký Tài Khoản";
+}
+
+<h1 class="text-success text-center pt2"> Đăng Ký Tài Khoản Tại Đây Nè ! </h1>
+<br />
+<br />
+<div class="row pb5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="card-title text-center">ĐĂNG KÝ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Mật khẩu:</label>
+                        <input type="password" class="form-control" name="matkhau" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Họ tên:</label>
+                        <input type="text" class="form-control" name="hoten" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Số điện thoại:</label>
+                        <input type="tel" maxlength="10" class="form-control" name="dienthoai" required>
+                    </div>
+                    <input type="submit" value="Đăng Ký" class="btn btn-primary btn-block" onclick="InfoAlert();">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+<script>
+    function InfoAlert() {
+        alert("Đăng ký thành công.");
+    }
+</script>

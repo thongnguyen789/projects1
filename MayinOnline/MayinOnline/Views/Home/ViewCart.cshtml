@@ -1,0 +1,69 @@
+﻿@model List<MayinOnline.Models.Cartitem> 
+
+
+<h3 class="text-danger pt2 pb5">Giỏ hàng của bạn</h3>
+<br />
+@if (Model.Count > 0)
+{
+    int stt = 1;
+    int thanhtien = 0;
+    int tongtien = 0;
+    <table class="table">
+        <tr>
+            <th>STT</th>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            thanhtien = i.Mathang.GiaBan * i.Soluong;
+            tongtien += thanhtien;
+            <tr class="align-middle">
+                <td>
+                    @(stt++)
+                </td>
+                <td>
+                    <img src="~/Template/Picture/@(i.Mathang.HinhAnh)" width="50" />
+                    @(i.Mathang.Ten)
+                </td>
+                <td>
+                    @(i.Mathang.GiaBan.ToString("n0"))đ
+                </td>
+                <td>
+                    <form asp-action="UpdateItem" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <input name="id" type="hidden" asp-for="@(i.Mathang.MaMh)" />
+                                <input name="quantity" type="number" asp-for="@(i.Soluong)" min="1" oninput="this.value = Math.max(1, this.value)" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <input class="btn btn-success" type="submit" value="Cập nhật" />
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    @(thanhtien.ToString("n0"))đ
+                </td>
+                <td>
+                    <a asp-action="RemoveItem" asp-route-id="@i.Mathang.MaMh" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="4" class="text-end fw-bold">Thành tiền</td>
+            <td colspan="2"><strong class="text-danger">@(tongtien.ToString("n0"))đ</strong></td>
+        </tr>
+    </table>
+
+    <div class="text-end pb5">
+        <a class="btn btn-danger" asp-action="CheckOut">Thanh toán</a>
+    </div>
+}
+else
+{
+    <p class="alert alert-danger allca">Giỏ hàng rỗng!</p>
+}

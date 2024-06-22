@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MayinOnline.Models.Hoadon>
+
+@{ ViewData["Title"] = "Thống kê theo khách hàng"; }
+
+<br />
+<br />
+<br />
+<br />
+
+<h1 class="text-danger nav-link">Thống kê theo khách hàng</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="XemThongKeKhachHang">
+            <div class="form-group">
+                <label>Email khách hàng</label> <input type="email" name="emailkhachhang" />
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success my-1" type="submit" value="Thống kê" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+=>
+
+<label>Doanh thu từ khách hàng: @ViewData["tongtien"]đ</label>
+<hr />
+
+<div class="border border-secondary">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã Hóa Đơn</th>
+                <th>Ngày Lập</th>
+                <th>Tổng Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int stt = 1;
+                foreach (Hoadon hd in Model)
+                {
+                    <tr>
+                        <td>@stt</td>
+                        <td>@hd.MaHd</td>
+                        <td>@hd.Ngay</td>
+                        <td>@hd.TongTien.ToString("n0")đ</td>
+                    </tr> stt++;
+                } 
+            }
+        </tbody>
+    </table>
+</div>

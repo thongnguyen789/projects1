@@ -1,0 +1,10 @@
+﻿@model MayinOnline.Models.Hoadon
+@{
+    ViewData["Title"] = "Đặt hàng thành công";
+}
+
+<div class="trenlar text-center">
+    <h3 class="text-success">Cảm ơn quý khách đã đặt hàng</h3>
+    <p>Đơn hàng mã số @Model.MaHd </p>
+    <p>trị giá @(((int)Model.TongTien).ToString("n0"))đ đã được hệ thống ghi nhận. Chúng tôi sẽ sớm liên hệ bạn để xác nhận...</p>
+</div>

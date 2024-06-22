@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MayinOnline.Models.Khachhang>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Trang Khách Hàng</h1>
+
+<li class="d-flex flex-row priven">
+    <form asp-controller="Khachhangs" asp-action="Searchkhachhang">
+        <input type="search" name="SearchOne" placeholder="Tìm kiếm ở đây...." class="form-control" />
+    </form>
+</li>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên Khách Hàng
+            </th>
+            <th>
+                Điện Thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.MaKh">Xem</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

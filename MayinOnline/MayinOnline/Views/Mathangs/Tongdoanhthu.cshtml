@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MayinOnline.Models.Cthoadon>
+
+@{ ViewData["Title"] = "Index"; }
+<br />
+<br />
+
+<h1 class="text-danger nav-link">Tổng doanh thu</h1>
+<br />
+
+<h2><label>Tổng doanh thu có được là: @ViewData["tongtien"]đ</label></h2>
+<a class="btn btn-success" asp-action="excel">Xuất Excel</a>
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã Hóa Đơn
+            </th>
+            <th>
+                Đơn Giá
+            </th>
+            <th>
+                Số Lượng
+            </th>
+            <th>
+                Thành Tiền
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaHd)
+                </td>
+                <td>
+                    @string.Format("{0:n0}đ", item.DonGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @item.ThanhTien.ToString("n0")đ
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

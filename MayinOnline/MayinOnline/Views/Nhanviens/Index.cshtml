@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MayinOnline.Models.Nhanvien>
+
+@{
+    ViewData["Title"] = "Index Nhân viên";
+}
+
+<h1 class="publid">Trang Nhân Viên</h1>
+
+<p>
+    <a asp-action="Create">Thêm nhân viên</a>
+</p>
+<li class="d-flex flex-row priven">
+    <form asp-controller="Nhanviens" asp-action="Searchnhanvien">
+        <input type="search" name="NewSearch" placeholder="Tìm kiếm ở đây...." class="form-control" />
+    </form>
+</li>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên
+            </th>
+            <th>
+                Điện Thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Mật Khẩu
+            </th>
+            <th>
+                Mã Chức Vụ
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaCvNavigation.Ten)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MaNv">Sửa</a>
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.MaNv">Xem</a>
+                    @if (item.MaCv == 1)
+                    {
+
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MaNv">Xóa</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

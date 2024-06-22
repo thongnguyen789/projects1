@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MayinOnline.Models.Hoadon>
+
+@{ ViewData["Title"] = "Thống kê theo ngày"; }
+
+<br />
+<br />
+<br />
+<br />
+<h1 class="text-danger nav-link">Thống kê hóa đơn theo ngày</h1>
+<form method="post" style="display: flex; align-items: center; grid-gap: 10px" asp-controller="Mathangs" asp-action="XemThongKeTheoNgay">
+    Từ: <input style="display: inline-block" type="date" name="Ngaybatdau" class="form-control " pattern="\d{2}/\d{2}/\d{4}" />
+    Đến: <input style="display: inline-block" type="date" name="Ngayketthuc" class="form-control" pattern="\d{2}/\d{2}/\d{4}" />
+    <input style="display: inline-block" type="submit" value="Xem" class="btn btn-warning" />
+</form>

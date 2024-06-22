@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MayinOnline.Models.Mathang>
+@{
+    ViewData["Title"] = "Thông tin sản phẩm theo danh mục";
+}
+
+<h3 class="text-info pt2">Tất cả sản phẩm theo danh mục </h3>
+<br />
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    @foreach (var item in Model)
+    {
+        <div class="col mb-5">
+            <div class="card h-100 imag" onclick="toggleHover(this)">
+                <!-- Sale badge-->
+                <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Giảm giá</div>
+                <!-- Product image-->
+                <a asp-action="Details" asp-route-id="@item.MaMh">
+                    <img class="card-img-top" src="~/Template/Picture/@Html.DisplayFor(modelItem => item.HinhAnh)" alt="@item.Ten" />
+                </a>
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <a asp-action="Details" asp-route-id="@item.MaMh" class="text-decoration-none">
+                            <h5 class="fw-bolder text-info">@Html.DisplayFor(modelItem => item.Ten)</h5>
+                        </a>
+                        <!-- Product reviews-->
+                        <div class="d-flex justify-content-center small text-warning mb-2">
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star"></div>
+                        </div>
+                        <!-- Product price-->
+                        <span class="text-danger fw-bolder"> @string.Format("{0:N0}đ", item.GiaBan)</span>
+                        @if (item.GiaGoc != item.GiaBan)
+                        {
+                            <span class="text-muted text-decoration-line-through">@Html.DisplayFor(modelItem => item.GiaGoc)đ</span>
+                        }
+                        <div class="d-flex">
+                            <div>
+                                <span>Lượt xem: @Html.DisplayFor(modelItem => item.LuotXem)</span>
+                            </div>
+                            <div class="pl-4">
+                                <span>Lượt mua: @Html.DisplayFor(modelItem => item.LuotMua)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-danger mt-auto" asp-action="AddToCart" asp-route-id="@item.MaMh">Thêm giỏ hàng</a></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MayinOnline.Models.Danhmuc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="publid">Trang Danh Mục</h1>
+
+<p>
+    <a asp-action="Create">Thêm mặt hàng</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MaDm">Sửa</a>
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.MaDm">Xem</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MaDm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

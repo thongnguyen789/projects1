@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MayinOnline.Models.Mathang>
+
+@{
+    ViewData["Title"] = "Index Mặt hàng Admin";
+}
+
+<h1 class="publid">Trang Mặt Hàng</h1>
+
+<p>
+    <a asp-action="Create">Thêm mặt hàng</a>
+</p>
+<li class="d-flex flex-row priven">
+    <form asp-controller="Mathangs1" asp-action="Searchmathang">
+        <input type="search" name="SearchKey" placeholder="Tìm kiếm ở đây...." class="form-control" />
+    </form>
+</li>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên
+            </th>
+            <th>
+                Giá Góc
+            </th>
+            <th>
+                Giá Bán
+            </th>
+            <th>
+                Số Lượng
+            </th>
+            <th>
+                Hình Ảnh
+            </th>
+            <th>
+                Lượt Xem
+            </th>
+            <th>
+                Lượt Mua
+            </th>
+            <th>
+                Mã Danh Mục
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @item.GiaGoc.ToString("n0")đ
+                </td>
+                <td>
+                    @item.GiaBan.ToString("n0")đ
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    <img src="~/Template/Picture/@Html.DisplayFor(modelItem => item.HinhAnh)" width="200" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LuotXem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LuotMua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDmNavigation.Ten)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MaMh">Sửa</a>
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.MaMh">Xem</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MaMh">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

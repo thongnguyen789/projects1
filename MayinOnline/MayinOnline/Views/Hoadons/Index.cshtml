@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MayinOnline.Models.Hoadon>
+
+@{
+    ViewData["Title"] = "Index Hóa đơn";
+}
+
+<h1>Trang Hóa Đơn</h1>
+<br />
+<br />
+<h4>Danh sách hóa đơn</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Tổng Tiền
+            </th>
+            <th>
+                Mã Khách Hàng
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </td>
+                <td>
+                    @item.TongTien.ToString("n0")đ
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKhNavigation.Ten)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.MaHd">Xem</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

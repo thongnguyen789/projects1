@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MayinOnline.Models.Hoadon>
+
+<h1 class="text-danger nav-link pd4">Chi tiết tất cả hóa đơn</h1>
+
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Mã hóa đơn
+            </th>
+            <th>
+                ngày
+            </th>
+            <th>
+                tổng tiền
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hd in Model)
+        {
+            <tr>
+                <td>
+                    @hd.MaKhNavigation.Ten
+                </td>
+                <td>
+                    @hd.MaHd
+                </td>
+                <td>
+                    @hd.Ngay
+                </td>
+                <td>
+                    @hd.TongTien.ToString("n0")đ
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="chitiet" asp-route-id="@hd.MaHd">Xem chi tiết</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Home" asp-action="Customer" class="btn btn-secondary allca">Quay lại</a>

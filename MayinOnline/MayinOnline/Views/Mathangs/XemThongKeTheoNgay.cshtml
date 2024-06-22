@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MayinOnline.Models.Hoadon>
+
+@{ ViewData["Title"] = "Index"; }
+
+<br />
+<br />
+<br />
+<br />
+<h1 class="text-danger pb5 nav-link">Thống kê hóa đơn theo ngày</h1>
+<label>Ngày bắt đầu: @ViewData["ngaybatdau"]</label>
+<br />
+<label>Ngày kết thúc: @ViewData["ngayketthuc"]</label>
+<br />
+<label>Tổng tiền trong khoảng thời gian trên: @ViewData["tongtien"]</label>
+<br />
+<a asp-action="ThongKeTheoNgay">Trở lại</a>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã Hóa Đơn
+            </th>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Tổng Tiền
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Điện Thoại
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaHd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </td>
+                <td>
+                    @item.TongTien.ToString("n0")đ
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKhNavigation.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKhNavigation.DienThoai)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewData["Title"] - Cửa hàng bán máy in - Thiết bị in Chính hãng</title>
+    <!-- Custom fonts for this template-->
+    <link href="~/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/Admin/css/sb-admin-2.css" rel="stylesheet" />
+
+</head>
+<body id="page-top">
+    <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Mathnags" asp-action="Index">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Shop Printer</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Khachhangs" asp-action="Index">
+                    <i class="fas fa-solid fa-users"></i>
+                    <span>Quản lý Khách hàng</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Nhanviens" asp-action="Index">
+                    <i class="fas fa-solid fa-user"></i>
+                    <span>Quản lý Nhân viên</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Hoadons" asp-action="Index">
+                    <i class="fas fa-solid fa-money-bill"></i>
+                    <span>Quản lý Hóa đơn</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Giao diện
+            </div>
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="Mathangs1" asp-action="Index">
+                    <i class="fas fa-solid fa-sun"></i>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-controller="Danhmucs" asp-action="Index">
+                    <i class="fas fa-solid fa-list"></i>
+                    <span>Quản lý danh mục sản phẩm</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Tiện ích
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-controller="Mathangs" asp-action="Tongdoanhthu">
+                    <i class="fas fa-solid fa-dollar-sign"></i>
+                    <span>Quản lý doanh thu</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-controller="Mathangs" asp-action="ThongKeKhachHang">
+                    <i class="fas fa-solid fa-chart-line"></i>
+                    <span>Thống kê theo khách hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-controller="Mathangs" asp-action="ThongKeTheoNgay">
+                    <i class="fas fa-solid fa-chart-pie"></i>
+                    <span>Thống kê theo ngày</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-flex justify-content-end">
+                    <a class="nav-link dropdown-toggle hide-caret" href="#taikhoan" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                        <img class="img-profile rounded-circle" src="~/Admin/img/undraw_profile.svg" style="width: 2rem">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                         aria-labelledby="userDropdown">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" asp-controller="Home" asp-action="Signout">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Đăng xuất
+                        </a>
+                    </div>
+                </nav>
+                <div class="container overflow-auto">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white" style="margin-top: 100%">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Website 2024 - Dịch vụ phần mềm An Giang</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sẵn sàng rời đi?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Chọn "Đăng xuất" bên dưới nếu bạn sẵn sàng kết thúc phiên hiện tại của mình.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                        <a class="btn btn-primary" asp-controller="Home" asp-action="Signout">Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Admin/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Admin/js/demo/chart-area-demo.js"></script>
+    <script src="~/Admin/js/demo/chart-pie-demo.js"></script>
+
+</body>
+</html>

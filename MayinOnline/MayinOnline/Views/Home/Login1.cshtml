@@ -1,0 +1,32 @@
+﻿@{
+
+    ViewData["Title"] = "Đăng Nhập Lại";
+}
+
+<div class="row pt2 pb5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <label class="text-danger"> Tài khoản hoặc Mật khẩu không chính xác</label>
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title text-center">ĐĂNG NHẬP LẠI</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Tên đăng nhập:</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label>Mật khẩu:</label>
+                        <input type="password" class="form-control" name="matkhau">
+                    </div>
+                    <input type="submit" value="Đăng Nhập" class="btn btn-primary btn-block">
+                </div>
+            </div>
+        </form>
+        <p class="mt-3 text-center">Bạn chưa có tài khoản? <a asp-action="Register">Đăng ký</a></p>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
